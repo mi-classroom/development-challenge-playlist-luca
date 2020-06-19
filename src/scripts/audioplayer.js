@@ -1,15 +1,15 @@
 class Playlist {
   constructor(playlist) {
     this.playlist = playlist;
-    this.tracks = playlist.querySelectorAll('.playlist__track');
+    this.tracks = Array.from(playlist.querySelectorAll('.playlist__track'));
 
     this.init();
   }
 
   init() {
     this.tracks.forEach((track, i) => {
-      track = new Howl({
-        src: [track.getAttribute('data-js-track-src')],
+      this.tracks[i] = new Howl({
+        src: [this.tracks[i].getAttribute('data-js-track-src')],
       });
 
       track.addEventListener('click', () => {
